@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Assessment {
+  id           String @id @default(uuid())
+  profile_name String
+  profile_mail String
+  profile_img  String
+  rating_text  String
+  rating_media Float
+  loged_from   String
+
+  createdAt DateTime @default(now())
+
+  @@map("IND_Assessments")
+}
