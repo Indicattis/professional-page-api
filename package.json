@@ -1,17 +1,17 @@
-
-  
 {
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "prisma": "^5.16.1",
+    "prisma": "^5.17.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.1",
+    "@prisma/client": "^5.17.0",
+    "@vercel/postgres": "^0.9.0",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
   }
 }
