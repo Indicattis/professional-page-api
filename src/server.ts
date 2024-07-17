@@ -2,6 +2,6 @@ import { app, port } from "./app";
 
 
 
-app.listen(3001, () => {
+app.listen(port, () => {
     console.log("HTTP server running on port "+port)
 })
