@@ -1,33 +1,20 @@
-import { Assessment } from "@prisma/client";
-import { prisma } from "../../prisma";
+import { PrismaClient } from "@prisma/client";
+import { Assessment as PrismaAssessment } from "@prisma/client";
 import { AssessmentDTO } from "../models/assessment";
 
-
-
-
-
+const prisma = new PrismaClient();
 
 export class create_assessment {
-  async execute(data: AssessmentDTO): Promise<Assessment> {
+  async execute(data: AssessmentDTO): Promise<PrismaAssessment> {
     const existingClientWithEmail = await prisma.assessment.findUnique({
       where: {
         profile_mail: data.profile_mail,
       },
     });
 
-    // const existingClientWithPhone = await prisma.cliente.findUnique({
-    //   where: {
-    //     client_phone: data.client_phone,
-    //   },
-    // });
-
     if (existingClientWithEmail) {
       throw new Error('Email já cadastrado');
     }
-
-    // if (existingClientWithPhone) {
-    //   throw new Error('Telefone já cadastrado');
-    // }
 
     const item = await prisma.assessment.create({
       data: {
@@ -44,8 +31,8 @@ export class create_assessment {
 }
 
 export class select_assessment {
-    async fetch(): Promise<AssessmentDTO[]> {
-        const items = await prisma.assessment.findMany();
-        return items;
-    }
+  async fetch(): Promise<AssessmentDTO[]> {
+    const items = await prisma.assessment.findMany();
+    return items;
   }
+}
