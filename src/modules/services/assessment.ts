@@ -21,7 +21,7 @@ export class create_assessment {
     // });
 
     if (existingClientWithEmail) {
-      throw new Error('Email já cadastrado');
+      throw new Error('O usuario do mail informado já comentou anteriormente!');
     }
 
     // if (existingClientWithPhone) {
